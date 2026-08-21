@@ -11,6 +11,8 @@ from scripts.run_behavioral_evals import (
     validate_cases,
 )
 from scripts.install_local import MANIFEST, install
+from scripts.retrieve_investment_cases import load_cases, public_view, rank_cases
+from scripts.validate_investment_cases import validate as validate_investment_cases
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -77,6 +79,28 @@ class EvalRunnerTests(unittest.TestCase):
                     (ROOT / relative).read_bytes(),
                     (target / relative).read_bytes(),
                 )
+
+    def test_investment_case_library_is_balanced_and_valid(self):
+        rows, errors = validate_investment_cases(ROOT / "references" / "investment-cases.jsonl")
+        self.assertEqual([], errors)
+        self.assertGreaterEqual(len(rows), 20)
+        self.assertLessEqual(len(rows), 30)
+
+    def test_hardware_case_retrieval_prefers_structural_matches(self):
+        cases = load_cases(ROOT / "references" / "investment-cases.jsonl")
+        ranked = rank_cases(cases, {"hardware", "workflow"}, {"physical-reliability"}, None)
+        selected = [case["id"] for _, case in ranked[:3]]
+        self.assertIn("mind-robotics-a16z-invest", selected)
+        self.assertIn("diode-a16z-invest", selected)
+
+    def test_retrieval_hides_outcome_by_default(self):
+        cases = load_cases(ROOT / "references" / "investment-cases.jsonl")
+        view = public_view(cases[0], include_outcome=False)
+        self.assertNotIn("later_outcome", view)
+        self.assertNotIn("lesson", view)
+        audited = public_view(cases[0], include_outcome=True)
+        self.assertIn("later_outcome", audited)
+        self.assertIn("lesson", audited)
 
 
 if __name__ == "__main__":

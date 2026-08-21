@@ -16,7 +16,11 @@ MANIFEST = (
     Path("references/research-and-evidence.md"),
     Path("references/audit-template.md"),
     Path("references/eval-rubric.md"),
+    Path("references/case-retrieval.md"),
+    Path("references/investment-cases.jsonl"),
     Path("scripts/run_behavioral_evals.py"),
+    Path("scripts/retrieve_investment_cases.py"),
+    Path("scripts/validate_investment_cases.py"),
     Path("scripts/install_local.py"),
     Path("tests/cases.jsonl"),
     Path("tests/test_eval_runner.py"),
@@ -58,4 +62,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

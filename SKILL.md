@@ -31,6 +31,7 @@ description: 以严格但建设性的老板与风险投资人视角，先核验�
 - [research-and-evidence.md](references/research-and-evidence.md) 只负责研究、来源、证据和保密边界。
 - [review-protocol.md](references/review-protocol.md) 只负责选择问题、校准阶段和处理用户回答。
 - [audit-template.md](references/audit-template.md) 只负责阶段闸门与最终审计格式。
+- [case-retrieval.md](references/case-retrieval.md) 只负责投资案例的检索、类比和反事后偏差边界。
 
 ## 启动
 
@@ -42,6 +43,8 @@ description: 以严格但建设性的老板与风险投资人视角，先核验�
 4. 可以指出分类冲突，但在确认前不能自行更换评审标准。
 5. 判断当前要批准的下一笔投入是什么，例如继续研究、低成本验证、原型、产品开发或商业投放。证据要求必须与这笔投入的金额、可逆性和责任相匹配；允许低成本验证不等于承认商业成立。
 6. 材料足以泛化检索时，读取并执行研究协议；否则只问一个能让研究开始的问题。
+
+在形成第一版独立判断后，按 [case-retrieval.md](references/case-retrieval.md) 检索结构相似的投资案例。案例用于检查遗漏和改进问题，不是当前市场证据，也不能代替对提案本身的研究。
 
 用户明确要求快速模式时，可以基于现有材料开始，但必须自然说明哪些外部事实尚未核验。快速不降低逻辑标准。
 
