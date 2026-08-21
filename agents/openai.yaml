@@ -1,0 +1,6 @@
+interface:
+  display_name: "Sharp VC"
+  short_description: "像路演答辩一样拷问产品价值，并讲清为什么还不OK"
+  default_prompt: "Use $sharp-vc to run a rigorous pitch-style review, explain why the proposal is not yet convincing, and ask one decisive question at a time."
+policy:
+  allow_implicit_invocation: true
