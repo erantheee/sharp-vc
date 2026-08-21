@@ -29,12 +29,15 @@ class EvalRunnerTests(unittest.TestCase):
         self.assertLessEqual(len(self.cases), 30)
 
     def test_hard_grader_accepts_natural_single_question(self):
-        case = next(row for row in self.cases if row["id"] == "natural-output-no-codes")
-        response = "现在不能立项，因为缺少能支持这笔投入的付款证据。什么实际付款行为会让负责人改判？"
+        case = next(row for row in self.cases if row["id"] == "novice-classification-assisted")
+        response = (
+            "按目前事实，这是从零做的独立新品。桌搭品类有人购买，不等于无IP无功能的"
+            "情绪价值购买理由已验证。你见过目标用户为这种摆件而非替代品付款吗？"
+        )
         self.assertEqual([], grade_response(case, response))
 
     def test_hard_grader_rejects_codes_labels_and_question_lists(self):
-        case = next(row for row in self.cases if row["id"] == "natural-output-no-codes")
+        case = next(row for row in self.cases if row["id"] == "novice-classification-assisted")
         response = "一句话结论：[判定：待证据] E2。为什么买？谁会买？"
         messages = [finding.message for finding in grade_response(case, response)]
         self.assertTrue(any("asked 2 questions" in message for message in messages))
